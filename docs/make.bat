@@ -35,7 +35,7 @@ goto end
 
 :github
 %SPHINXBUILD% -M html %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
-copy .\build\html\* .\
+xcopy /E /I /Y .\build\html .
 
 :end
 popd
