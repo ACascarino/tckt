@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to TCKT’s documentation! &#8212; TCKT 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-tckt-s-documentation">
+<h1>Welcome to TCKT’s documentation!<a class="headerlink" href="#welcome-to-tckt-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="module-allocator">
+<span id="indices-and-tables"></span><h1>Indices and tables<a class="headerlink" href="#module-allocator" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="allocator.Seat">
+<em class="property">class </em><code class="sig-prename descclassname">allocator.</code><code class="sig-name descname">Seat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bank</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#allocator.SeatingBank" title="allocator.SeatingBank">allocator.SeatingBank</a></span></em>, <em class="sig-param"><span class="n">row</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">column</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#allocator.Seat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class defining a particular seat within a seating bank.</p>
+<p>Arguments:
+bank: The SeatingBank of which the Seat is a member
+row: The row label of the Seat
+column: The seat number of the Seat within the row</p>
+<dl class="py method">
+<dt id="allocator.Seat.distance_from">
+<code class="sig-name descname">distance_from</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#allocator.Seat" title="allocator.Seat">allocator.Seat</a></span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><a class="headerlink" href="#allocator.Seat.distance_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the X and Y distance between this seat and another, in metres</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="allocator.Seat.get_x">
+<code class="sig-name descname">get_x</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#allocator.Seat.get_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the X offset from the edge of the SeatingBank, in metres</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="allocator.Seat.get_y">
+<code class="sig-name descname">get_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#allocator.Seat.get_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the Y offset from the edge of the SeatingBank, in metres</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="allocator.Seat.is_socially_distant_from">
+<code class="sig-name descname">is_socially_distant_from</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#allocator.Seat" title="allocator.Seat">allocator.Seat</a></span></em>, <em class="sig-param"><span class="n">x_thresh</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y_thresh</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#allocator.Seat.is_socially_distant_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the provided seat is distanced from this one given X and Y thresholds.</p>
+<p>Arguments:
+other: the target seat
+x_thresh: horizontal (along-row) social distancing threshold (in metres)
+y_thresh: lateral (across-row) social distancing threshold (in metres)</p>
+<p>Returns:
+A bool describing if the provided seat is distanced from this one.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="allocator.SeatingBank">
+<em class="property">class </em><code class="sig-prename descclassname">allocator.</code><code class="sig-name descname">SeatingBank</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">row_pitch</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">column_pitch</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">max_columns</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">row_labels</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#allocator.SeatingBank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dataclass to hold properties of a seating bank.</p>
+<p>Arguments:
+row_pitch: Distance between rows, in metres
+column_pitch: Distance between seats in a row, in metres
+max_columns: Number of seats in a row
+row_labels: List of strings detailing the labels for each row</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">TCKT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Angel Cascarino.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
