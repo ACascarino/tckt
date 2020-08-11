@@ -7,10 +7,10 @@ class SeatingBank:
     """Dataclass to hold properties of a seating bank.
 
     Arguments:
-    row_pitch: Distance between rows, in metres
-    column_pitch: Distance between seats in a row, in metres
-    max_columns: Number of seats in a row
-    row_labels: List of strings detailing the labels for each row
+        row_pitch: Distance between rows, in metres
+        column_pitch: Distance between seats in a row, in metres
+        max_columns: Number of seats in a row
+        row_labels: List of strings detailing the labels for each row
     """
 
     row_pitch: float
@@ -23,9 +23,9 @@ class Seat:
     """Class defining a particular seat within a seating bank.
 
     Arguments:
-    bank: The SeatingBank of which the Seat is a member
-    row: The row label of the Seat
-    column: The seat number of the Seat within the row
+        bank: The SeatingBank of which the Seat is a member
+        row: The row label of the Seat
+        column: The seat number of the Seat within the row
     """
     def __init__(self, bank: SeatingBank, row: str, column: int):
         if column > bank.max_columns:
@@ -61,12 +61,12 @@ class Seat:
         """Determine if the provided seat is distanced from this one given X and Y thresholds.
 
         Arguments:
-        other: the target seat
-        x_thresh: horizontal (along-row) social distancing threshold (in metres)
-        y_thresh: lateral (across-row) social distancing threshold (in metres)
+            other: the target seat
+            x_thresh: horizontal (along-row) social distancing threshold (in metres)
+            y_thresh: lateral (across-row) social distancing threshold (in metres)
 
         Returns:
-        A bool describing if the provided seat is distanced from this one.
+            A bool describing if the provided seat is distanced from this one.
         """
 
         x, y = self.distance_from(other)
